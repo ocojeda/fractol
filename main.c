@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 14:11:39 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/02/27 14:12:21 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_fractol_available(void)
 {
-	LA IL ME FAUT AFFICHER LES FRACTALS DISPONIBLES
+	/*LA IL ME FAUT AFFICHER LES FRACTALS DISPONIBLES*/
 }
 
 int		main(int ac, char **av)
