@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 17:46:56 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 17:51:52 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ void	ft_third(void);
 void	ft_mandel(void);
 float	ft_map(float x, float lenght, float min, float max);
 int 	calculus(float a, float b, float ca, float cb);
-
+int     algo_mandel(void);
 #endif
