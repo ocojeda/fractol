@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 18:06:18 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 19:20:31 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "libft/libft.h"
 # define LEN 1500
 # define HEIGHT 1200
-# define MAX_ITER 100
+# define MAX_ITER 1000
 
 typedef		struct	s_screen
 {

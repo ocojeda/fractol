@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/27 18:14:30 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 18:24:32 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int             my_key_func(int keycode, t_screen *fst)
 	ft_putnbr(keycode);
 	if(keycode == 53)
 		exit (0);
-	mlx_destroy_image(fst->mlx, fst->img);
-	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
+//	mlx_destroy_image(fst->mlx, fst->img);
+//	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
+//	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	return (1);
 }
 
