@@ -6,11 +6,11 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 16:52:21 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/27 17:08:45 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.c"
+#include "fractol.h"
 
 void	ft_fractol_available(void)
 {
@@ -20,12 +20,11 @@ void	ft_fractol_available(void)
 int		main(int ac, char **av)
 {
 	if (ac != 2)
-		ft_fractol_available(void);
-	if (ft_strcmp(av[1], "Julia") == 0)
-		ft_julia(void);
-	if (ft_strcmp(av[1], "Mandelbrot") == 0)
-		ft_mandel(void);
-	if (ft_strcmp(av[1], "third") == 0)
-		ft_third(void);
-	
+		ft_fractol_available();
+//	if (ft_strcmp(av[1], "Julia") == 0)
+//		ft_julia();
+	if (ft_strcmp(av[1], "mandelbrot") == 0)
+		ft_mandel();
+//	if (ft_strcmp(av[1], "third") == 0)
+//		ft_third();
 }

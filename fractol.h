@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 16:50:59 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/27 17:27:02 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 # define FRACTOL_H
 # include <math.h>
 # include <mlx.h> 
-# include <fcntl>
+# include <fcntl.h>
 # include "libft/libft.h"
-# define LEN 1500;
-# define HIGHT 1200;
+# define LEN 1500
+# define HIGHT 1200
+# define MAX_ITER 100
 
 typedef		struct	s_screen
 {
@@ -26,10 +27,11 @@ typedef		struct	s_screen
 	void	*img;
 	int		bpp;
 	int		sizeline;
-	int		len;
-	int		hight;
 	int		endian;
 	char	*data;
 }			t_screen;
 
+void	ft_julia(void);
+void	ft_third(void);
+void	ft_mandel(void);
 #endif
