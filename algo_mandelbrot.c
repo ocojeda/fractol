@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/27 17:46:52 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 18:18:26 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,27 @@ int		calculus(float a, float b, float ca, float cb)
 	return (n);
 }
 
-int		algo_mandel()
+int		algo_mandel(t_screen *fst, int x)
 {
-	int x;
 	int y;
-	int n;
 	float a;
 	float b;
-	int color;
+	unsigned int color;
 
-	color = 0x00000000;
-	x = 0;
+	color = 255;
 	y = 0;
 	while (y < HEIGHT)
 	{
 		while (x < LEN)
 		{
-			a = map(x, LEN, -2, 2);
-			b = map(y, HEIGHT, -2, 2);
+			a = ft_map(x, LEN, -2, 2);
+			b = ft_map(y, HEIGHT, -2, 2);
 			if (calculus(a, b, a, b) == MAX_ITER)
-			color = 0x00ffffff;
-			((unsigned int *)fst->data)[x + y * len] = color
+				color = 0x00ffffff;
+			((unsigned int *)fst->data)[x + y * LEN] = color;
 			x++;
 		}
 		y++;
 	}
+	return (1);
 }

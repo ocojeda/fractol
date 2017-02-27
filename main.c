@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/27 17:08:45 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/27 18:13:00 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_fractol_available(void)
 {
+	ft_putendl("coucou");
 	/*LA IL ME FAUT AFFICHER LES FRACTALS DISPONIBLES*/
 }
 
