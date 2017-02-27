@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/27 19:18:46 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/02/27 23:19:49 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int		calculus(float a, float b, float ca, float cb)
 			return (n);
 		n++;
 	}
-//	ft_putnbr(n);
 	return (n);
 }
 
@@ -40,6 +39,7 @@ int		algo_mandel(t_screen *fst, int x)
 	float a;
 	float b;
 	int color;
+	int n;
 
 	y = 0;
 	while (y < HEIGHT)
@@ -47,13 +47,20 @@ int		algo_mandel(t_screen *fst, int x)
 		x = 0;
 		while (x < LEN)
 		{
-			a = ft_map(x, LEN, -1, 1);
-			b = ft_map(y, HEIGHT, -1, 1);
-//			printf("%f\n",a);
-//			printf("%f\n",b);
-			color = ft_map(calculus(a, b, a, b), MAX_ITER, 0xFFFF,0xFFFFFF );
-			ft_putnbr(color);
-			ft_putendl("color : ");
+			a = ft_map(x, LEN, -2, 2);
+			b = ft_map(y, HEIGHT, -2, 2);
+			n = calculus(a, b, a, b);
+			if (n < 20)
+				color = 0;
+			else if (n == (MAX_ITER / 2))
+				color = 0x00777777;
+			else if (n > (MAX_ITER / 2) && n != MAX_ITER)
+				color = 0x00bbbbbb;
+			else if (n == MAX_ITER)
+				color = 0x00000000;
+			else 
+				color = 0x00ffffff;
+
 			((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 			x++;
 		}
