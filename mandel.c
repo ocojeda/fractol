@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/27 23:19:22 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/28 01:21:29 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			mouse_hook(int button, int x, int y, t_screen *fst)
 	ft_putendl("-");
 	return (1);
 }
-void	ft_mandel(void)
+void	ft_mandel(t_data *beg)
 {
 	t_screen fst;
 
