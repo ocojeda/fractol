@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/28 05:29:06 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/28 05:39:01 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 	int n;
 
 	y = 0;
-	printf("%d \n", &fst->data);
 	while (y < HEIGHT)
 	{
 		x = 0;

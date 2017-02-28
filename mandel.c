@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/28 05:33:08 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/28 05:41:57 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ int             my_key_func(int keycode, t_screen *fst)
 }
 int			mouse_hook(int button, int x, int y, t_screen *fst)
 {
-	if(button == 1)
+	if(button == 5)
 	{	
-	mlx_destroy_image(fst->mlx, fst->img);
-	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	clean(fst);
-	algo_mandel(fst, 0, fst->beg);
-	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
+		ft_putnbr(button);
+		mlx_destroy_image(fst->mlx, fst->img);
+		fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
+		clean(fst);
+		algo_mandel(fst, 0, fst->beg);
+		mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	}
 	return (1);
 }
