@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/02/28 02:43:25 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/28 05:29:06 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,27 @@ int		calculus(float a, float b, float ca, float cb)
 	}
 	return (n);
 }
+int		clean(t_screen *fst)
+{
+	int y;
+	int x;
+	int color;
 
+	color = 0;
+	y = 0;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < LEN)
+		{
+			if(fst->data != NULL)
+			((unsigned int *)fst->data)[x + y * LEN] = color;
+			x++;
+		}
+		y++;
+	}
+	return (1);
+}
 int		algo_mandel(t_screen *fst, int x, t_data *beg)
 {
 	int y;
@@ -42,6 +62,7 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 	int n;
 
 	y = 0;
+	printf("%d \n", &fst->data);
 	while (y < HEIGHT)
 	{
 		x = 0;
@@ -60,10 +81,8 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 				color = 0x00000000;
 			else 
 				color = 0x00ffffff;
-			ft_putstr("hello");
 			if(fst->data != NULL)
 			((unsigned int *)fst->data)[x + y * LEN] = abs(color);
-			ft_putstr("bye");
 			x++;
 		}
 		y++;

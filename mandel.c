@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/02/28 04:11:27 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/28 05:33:08 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,11 @@ int			mouse_hook(int button, int x, int y, t_screen *fst)
 {
 	if(button == 1)
 	{	
-	ft_putnbr(button);
-	ft_putstr("-");
-	ft_putnbr(x);
-	ft_putstr("-");
-	ft_putnbr(y);
-	ft_putendl("-");
 	mlx_destroy_image(fst->mlx, fst->img);
-	ft_putendl("-");
-	ft_putendl("mandel");
 	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	free(fst->data);
-	ft_putendl("mandel");
-	fst->data = mlx_get_data_addr(fst->img, fst->bpp, fst->sizeline, 
-			fst->endian);
-	ft_putendl("mandel");
-	algo_mandel(&fst, 0, fst->beg);
-	ft_putendl("newimage");
+	clean(fst);
+	algo_mandel(fst, 0, fst->beg);
 	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
-	ft_putendl("put");
 	}
 	return (1);
 }

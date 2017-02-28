@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/28 02:05:31 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/02/28 04:52:07 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef		struct	s_screen
 	char	*data;
 	t_data  *beg;
 }			t_screen;
-
+int     clean(t_screen *fst);
 void	ft_julia(void);
 void	ft_third(void);
 void	ft_mandel(t_data *begin);
