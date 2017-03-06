@@ -6,14 +6,14 @@
 #    By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/17 18:15:56 by ocojeda-          #+#    #+#              #
-#    Updated: 2017/02/27 17:59:05 by tfaure           ###   ########.fr        #
+#    Updated: 2017/03/01 17:57:53 by tfaure           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 FLAGS = -Wall -Wextra  
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit -lm
-SRCS = mandel.c mandel.c map.c algo_mandelbrot.c
+SRCS = mandel.c mandel.c map.c algo_mandelbrot.c julia.c algo_julia.c clean.c
 LIBRARIES = libft/libft.a fractol.a
 OBJECTS = $(SRCS:.c=.o)
 

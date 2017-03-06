@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/02/28 01:28:37 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/01 18:17:40 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int		main(int ac, char **av)
 		return (0);
 	if (ac != 2)
 		ft_fractol_available();
-//	if (ft_strcmp(av[1], "Julia") == 0)
-//		ft_julia();
+	if (ft_strcmp(av[1], "julia") == 0)
+		ft_julia(beg);
 	if (ft_strcmp(av[1], "mandelbrot") == 0)
 		ft_mandel(beg);
 //	if (ft_strcmp(av[1], "third") == 0)

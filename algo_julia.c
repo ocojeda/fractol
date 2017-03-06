@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_mandelbrot.c                                  :+:      :+:    :+:   */
+/*   algo_julia.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/01 17:42:12 by tfaure           ###   ########.fr       */
+/*   Created: 2017/03/01 17:37:24 by tfaure            #+#    #+#             */
+/*   Updated: 2017/03/06 18:49:00 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "stdio.h"
-
-int		calculus(float a, float b, float ca, float cb)
+static int		calculus(float a, float b, t_data *beg)
 {
 	float aa;
 	float bb;
@@ -24,16 +22,16 @@ int		calculus(float a, float b, float ca, float cb)
 	{
 		aa = a * a - b * b;
 		bb = 2 * a * b;
-		a = aa + ca;
-		b = bb + cb;
-		if (a + b > 4)
+		a = aa + beg->realnb;
+		b = bb + beg->imaginarynb;
+		if (a + b > 3)
 			return (n);
 		n++;
 	}
 	return (n);
 }
 
-int		algo_mandel(t_screen *fst, int x, t_data *beg)
+int		algo_julia(t_screen *fst, int x, t_data *beg)
 {
 	int y;
 	float a;
@@ -49,17 +47,20 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 		{
 			a = ft_map(x, LEN, beg->minval, beg->maxval);
 			b = ft_map(y, HEIGHT, beg->minval, beg->maxval);
-			n = calculus(a, b, a, b);
-			if (n < 20)
-				color = 0;
-			else if (n == (MAX_ITER / 2))
-				color = 0x00777777;
-			else if (n > (MAX_ITER / 2) && n != MAX_ITER)
-				color = 0x00bbbbbb;
-			else if (n == MAX_ITER)
-				color = 0x00000000;
+			n = calculus(a, b, beg);
+		//	color = ft_map(n, MAX_ITER, 0x00, 0xFF);
+			if (n < (MAX_ITER / 2) / 2)
+				color = 0x0;
+			else if (n == MAX_ITER )
+				color = 0x0;
+			else if (n < MAX_ITER / 2)
+				color = 0x666666;
+			else if (n > MAX_ITER * 0.75)
+				color = 0x999999;
+			else if (n > MAX_ITER / 2)
+				color = 0xdddddd;
 			else 
-				color = 0x00ffffff;
+				color = 0x0;
 			if(fst->data != NULL)
 			((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 			x++;
