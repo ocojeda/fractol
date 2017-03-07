@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/07 13:19:47 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 13:49:39 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef		struct	s_data
 	int				posy;
 	float			realnb;
 	float			imaginarynb;
+	float				zoom;
 }					t_data;
 
 typedef		struct	s_screen
@@ -48,5 +49,6 @@ void	ft_third(void);
 void	ft_mandel(t_data *begin);
 float	ft_map(float x, float lenght, float min, float max);
 int     algo_mandel(t_screen *fst, int x, t_data *beg);
+int		mouse_hook(int button, int x, int y, t_screen *fst);
 int     algo_julia(t_screen *fst, int x, t_data *beg);
 #endif

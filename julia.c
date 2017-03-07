@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 13:13:49 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 13:46:57 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			ft_julia(t_data *beg)
 {
 	t_screen fst;
 
+	beg->zoom = 1;
 	beg->minval = -2;
 	beg->maxval = 2;
 	beg->realnb = 0;
@@ -63,6 +64,7 @@ void			ft_julia(t_data *beg)
 	fst.win = mlx_new_window(fst.mlx, LEN, HEIGHT, "mathilde aime trop la polla!");
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
 	mlx_hook(fst.win, 6, 3, mouse_motion, &fst);
+	mlx_hook(fst.win, 4, 3, mouse_hook, &fst);
 	mlx_hook(fst.win, 2, 3, my_key_func, &fst);
 	mlx_loop(fst.mlx);
 }
