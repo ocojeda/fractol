@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/06 13:31:28 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 13:19:47 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "libft/libft.h"
 # define LEN 1200
 # define HEIGHT 1200
-# define MAX_ITER 50
+# define MAX_ITER 30
 
 typedef		struct	s_data
 {
