@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/07 13:49:39 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/07 15:00:37 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 
 typedef		struct	s_data
 {
-	int				minval;
-	int				maxval;
+	float				minvalx;
+	float				maxvalx;
+	float				minvaly;
+	float				maxvaly;
 	int				posx;
 	int				posy;
 	float			realnb;

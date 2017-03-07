@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 13:46:57 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/07 14:18:09 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ void			ft_julia(t_data *beg)
 	t_screen fst;
 
 	beg->zoom = 1;
-	beg->minval = -2;
-	beg->maxval = 2;
+	beg->minvalx = -2;
+	beg->maxvalx = 2;
+	beg->minvaly = -2;
+	beg->maxvaly = 2;
 	beg->realnb = 0;
 	beg->imaginarynb = 0;
 	ft_putendl("je suis la !");

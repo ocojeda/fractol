@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:37:24 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 13:44:50 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/07 15:07:28 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,11 @@ int		algo_julia(t_screen *fst, int x, t_data *beg)
 		while (x < LEN)
 		{
 //			if(x < LEN/2 && y < HEIGHT/2)
-			a = ft_map(x, LEN, beg->minval / beg->zoom, beg->maxval / beg->zoom);
+			a = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
 //			else 
 //			a = ft_map(x, LEN, beg->minval , beg->maxval );
 			if(x >LEN/2)
-			b = ft_map(y, HEIGHT, beg->minval / beg->zoom , beg->maxval / beg->zoom);
+			b = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
 
 			n = calculus(a, b, beg);
 		//	color = ft_map(n, MAX_ITER, 0x00, 0xFF);
