@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/07 18:10:07 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 19:08:06 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,30 @@ int			mouse_hook(int button, int x, int y, t_screen *fst)
 {
 	float xlen;
 	float ylen;
+	float temp;
 	t_data *beg;
 
 	beg = fst->beg;
 	ft_putnbr(button);	
 	if(button == 4)
 	{
-		fst->beg->zoom -= 0.01;
+		fst->beg->zoom -= 0.3;
+	}
+	if(button == 5)
+	{
+		fst->beg->zoom += 8;
 	}
 	if(button == 1)
 	{
-		fst->beg->zoom += 0.05;
+		temp = (-1* (beg->minvalx - beg->maxvalx))/2;
 		xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
 		ylen = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
-		beg->minvalx -= xlen;
-		beg->maxvalx -= xlen;
-		beg->minvaly -= ylen;
-		beg->maxvaly -= ylen;
+		beg->minvalx = (xlen-temp);
+		beg->maxvalx = (xlen+temp);
+		temp = (-1* (beg->minvaly - beg->maxvaly))/2;
+		beg->minvaly = (ylen-temp);
+		beg->maxvaly = (ylen+temp);
+		fst->beg->zoom += 1;
 	}
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
