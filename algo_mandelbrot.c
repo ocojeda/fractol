@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 14:13:52 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 18:23:38 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 		x = 0;
 		while (x < LEN)
 		{
-			a = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
-			b = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
+			a = ft_map(x, LEN, beg->minvalx / beg->zoom, beg->maxvalx / beg->zoom);
+			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, beg->maxvaly / beg->zoom);
 			n = calculus(a, b, a, b);
 			if (n < 20)
 				color = 0;
