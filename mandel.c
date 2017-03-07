@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/07 15:25:13 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 18:10:07 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,11 @@ int             my_key_func(int keycode, t_screen *fst)
 	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	return (1);
 }
+
 int			mouse_hook(int button, int x, int y, t_screen *fst)
 {
-	float tmp2;
-	float tmp;
-	float x2;
-	float y2;
+	float xlen;
+	float ylen;
 	t_data *beg;
 
 	beg = fst->beg;
@@ -38,17 +37,13 @@ int			mouse_hook(int button, int x, int y, t_screen *fst)
 	}
 	if(button == 1)
 	{
-		y = y / HEIGHT;
-		x2 = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
-		tmp = beg->minvalx;
-		tmp2 = beg->maxvalx;
-		beg->minvalx = x2 - ((x2 - tmp) / 1.1);
-		beg->maxvalx = x2 + ((tmp2 - x2) / 1.1);
-		y2 = ft_map(y, LEN, beg->minvaly, beg->maxvaly);
-		tmp = beg->minvaly;
-		tmp2 = beg->maxvaly;
-		beg->minvaly = y2 - ((y2 - tmp) / 1.1);
-		beg->maxvaly = y2 + ((tmp2 - y2) / 1.1);
+		fst->beg->zoom += 0.05;
+		xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
+		ylen = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
+		beg->minvalx -= xlen;
+		beg->maxvalx -= xlen;
+		beg->minvaly -= ylen;
+		beg->maxvaly -= ylen;
 	}
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
@@ -56,10 +51,12 @@ int			mouse_hook(int button, int x, int y, t_screen *fst)
 	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	return (1);
 }
+
 void	ft_mandel(t_data *beg)
 {
 	t_screen fst;
 
+	beg->zoom = 1;
 	beg->minvalx = -2;
 	beg->maxvalx = 2;
 	beg->minvaly = -2;
