@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:37:24 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 13:01:33 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 13:25:36 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int		calculus(float a, float b, t_data *beg)
 		bb = 2 * a * b;
 		a = aa + beg->realnb;
 		b = bb + beg->imaginarynb;
-		if (a + b > 3)
+		if (a + b > 5)
 			return (n);
 		n++;
 	}
@@ -54,7 +54,7 @@ int		algo_julia(t_screen *fst, int x, t_data *beg)
 			else if (n == MAX_ITER )
 				color = 0x0;
 			else if (n < MAX_ITER / 2)
-				color = 0x666666;
+				color = 0x333333;
 			else if (n > MAX_ITER * 0.75)
 				color = 0x999999;
 			else if (n > MAX_ITER / 2)
