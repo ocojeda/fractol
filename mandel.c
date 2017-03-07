@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/07 15:15:24 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 15:25:13 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int             my_key_func(int keycode, t_screen *fst)
 }
 int			mouse_hook(int button, int x, int y, t_screen *fst)
 {
-	int tmp2;
-	int tmp;
+	float tmp2;
+	float tmp;
+	float x2;
+	float y2;
 	t_data *beg;
 
 	beg = fst->beg;
@@ -37,20 +39,20 @@ int			mouse_hook(int button, int x, int y, t_screen *fst)
 	if(button == 1)
 	{
 		y = y / HEIGHT;
-		x = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
+		x2 = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
 		tmp = beg->minvalx;
 		tmp2 = beg->maxvalx;
-		beg->minvalx = x + ((x - tmp) / 1.001);
-		beg->maxvalx = x + ((tmp2 - x) / 1.001);
-		y = ft_map(y, LEN, beg->minvaly, beg->maxvaly);
+		beg->minvalx = x2 - ((x2 - tmp) / 1.1);
+		beg->maxvalx = x2 + ((tmp2 - x2) / 1.1);
+		y2 = ft_map(y, LEN, beg->minvaly, beg->maxvaly);
 		tmp = beg->minvaly;
 		tmp2 = beg->maxvaly;
-		beg->minvaly = y + ((y - tmp) / 1.001);
-		beg->maxvaly = y + ((tmp2 - y) / 1.001);
+		beg->minvaly = y2 - ((y2 - tmp) / 1.1);
+		beg->maxvaly = y2 + ((tmp2 - y2) / 1.1);
 	}
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	algo_julia(fst, 0, beg);
+	algo_mandel(fst, 0, beg);
 	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	return (1);
 }
