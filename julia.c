@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 13:01:35 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/07 13:13:49 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int		my_key_func(int keycode, t_screen *fst)
 	return (1);
 }
 
-static int		mouse_motion(int button, int x, int y, t_screen *fst)
+static int		mouse_motion(int x, int y, t_screen *fst)
 {
 //	static int		x2 = 0;
 //	static int		y2 = 0;
@@ -37,10 +37,6 @@ static int		mouse_motion(int button, int x, int y, t_screen *fst)
 		algo_mandel(fst, 0, fst->beg);
 		mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 	}*/
-		ft_putnbr(x);
-		ft_putstr("\n");
-		ft_putnbr(y);
-		ft_putstr("\n");
 		fst->beg->realnb = ft_map(x, LEN, -1 , 1);
 		fst->beg->imaginarynb = ft_map(y, HEIGHT, -1 , 1);
 		mlx_destroy_image(fst->mlx, fst->img);
@@ -66,7 +62,7 @@ void			ft_julia(t_data *beg)
 	algo_julia(&fst, 0, fst.beg);
 	fst.win = mlx_new_window(fst.mlx, LEN, HEIGHT, "mathilde aime trop la polla!");
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
-	mlx_hook(fst.win, 4, 3, mouse_motion, &fst);
+	mlx_hook(fst.win, 6, 3, mouse_motion, &fst);
 	mlx_hook(fst.win, 2, 3, my_key_func, &fst);
 	mlx_loop(fst.mlx);
 }
