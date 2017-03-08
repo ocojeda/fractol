@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/08 11:15:02 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/08 15:50:23 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef		struct	s_data
 	float			realnb;
 	float			imaginarynb;
 	float				zoom;
+	int 			flag;
+	int 			flag2;
 }					t_data;
 
 typedef		struct	s_screen

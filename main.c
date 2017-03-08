@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/07 13:01:36 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/08 15:36:34 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		main(int ac, char **av)
 		ft_julia(beg);
 	if (ft_strcmp(av[1], "mandelbrot") == 0)
 		ft_mandel(beg);
-//	if (ft_strcmp(av[1], "third") == 0)
+	ft_putstr("im out");
+	//	if (ft_strcmp(av[1], "third") == 0)
 //		ft_third();
 }
