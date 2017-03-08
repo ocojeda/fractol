@@ -6,57 +6,47 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/08 17:12:46 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/08 17:48:33 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void				re_mandel(t_screen *fst, t_data *beg)
+void				re_fract(t_screen *fst, t_data *beg)
 {
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	algo_mandel(fst, 0, beg);
+	if(beg->tfract == 1)
+		algo_mandel(fst, 0, beg);
+	if(beg->tfract == 2)
+		algo_julia(fst, 0, beg);
 	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 }
 static int			zoom_out_mandel(t_screen *fst, t_data *beg)
 {
 	fst->beg->zoom -= 0.1;
 	beg->flag = 3;
-	re_mandel(fst, beg);
+	re_fract(fst, beg);
 	return (1);
 }
 static int			zoom_in_mandel(t_screen *fst, t_data *beg, int x, int y)
 {
-		float xlen;
-		float ylen;
-		float temp;
-		temp = (-1* (beg->minvalx - beg->maxvalx))/2;
-		xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
-		ylen = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
-		beg->minvalx = (xlen-temp);
-		beg->maxvalx = (xlen+temp);
-		temp = (-1* (beg->minvaly - beg->maxvaly))/2;
-		beg->minvaly = (ylen-temp);
-		beg->maxvaly = (ylen+temp);
-		fst->beg->zoom += 0.1;
-		re_mandel(fst, fst->beg);
-		beg->flag = 3;
-		return (1);
-}
-int             my_key_func(int keycode, t_screen *fst)
-{
-	ft_putnbr(keycode);
-	ft_putendl("---");
-	if(keycode == 53)
-	{
-		free(fst->beg);
-		exit (0);
-	}
-	re_mandel(fst, fst->beg);
+	float xlen;
+	float ylen;
+	float temp;
+	temp = (-1* (beg->minvalx - beg->maxvalx))/2;
+	xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
+	ylen = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
+	beg->minvalx = (xlen-temp);
+	beg->maxvalx = (xlen+temp);
+	temp = (-1* (beg->minvaly - beg->maxvaly))/2;
+	beg->minvaly = (ylen-temp);
+	beg->maxvaly = (ylen+temp);
+	fst->beg->zoom += 0.1;
+	re_fract(fst, fst->beg);
+	beg->flag = 3;
 	return (1);
 }
-
 static int			mouse_hook(int button, int x, int y, t_screen *fst)
 {
 	t_data *beg;
@@ -77,8 +67,8 @@ static int			mouse_hook(int button, int x, int y, t_screen *fst)
 		beg->flag -= 1;
 		if(beg->zoom > 0.6)
 		{
-		if((beg->flag) == 0)
-			return (zoom_out_mandel(fst, beg));
+			if((beg->flag) == 0)
+				return (zoom_out_mandel(fst, beg));
 		}
 	}
 	if(button == 5)
@@ -91,6 +81,7 @@ void	ft_mandel(t_data *beg)
 {
 	t_screen fst;
 
+	beg->tfract = 1;
 	beg->flag = 2;
 	beg->zoom = 1;
 	beg->minvalx = -2;

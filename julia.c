@@ -6,19 +6,22 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/08 14:23:08 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/08 17:53:20 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int		my_key_func(int keycode, t_screen *fst)
+int             my_key_func(int keycode, t_screen *fst)
 {
+	ft_putnbr(keycode);
+	ft_putendl("---");
 	if(keycode == 53)
+	{
+		free(fst->beg);
 		exit (0);
-	mlx_destroy_image(fst->mlx, fst->img);
-	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
+	}
+	re_fract(fst, fst->beg);
 	return (1);
 }
 
@@ -46,21 +49,14 @@ static int mouse_hook(int button, int x, int y, t_screen *fst)
 		beg->maxvaly = ylen + temp;
 		beg->zoom += 1;
 	}
-	mlx_destroy_image(fst->mlx, fst->img);
-	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	algo_julia(fst, 0 , beg);
-	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
+	re_fract(fst, fst->beg);
 	return (1);
 }
 
 static int		mouse_motion(int x, int y, t_screen *fst)
 {
-		fst->beg->realnb = ft_map(x, LEN, -1 , 1);
-		fst->beg->imaginarynb = ft_map(y, HEIGHT, -1 , 1);
-		mlx_destroy_image(fst->mlx, fst->img);
-		fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-		algo_julia(fst, 0, fst->beg);
-		mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
+	fst->beg->realnb = ft_map(x, LEN, -1 , 1);
+	fst->beg->imaginarynb = ft_map(y, HEIGHT, -1 , 1);
 	return (1);
 }
 
@@ -68,6 +64,7 @@ void			ft_julia(t_data *beg)
 {
 	t_screen fst;
 
+	beg->tfract = 2;
 	beg->zoom = 1;
 	beg->minvalx = -2;
 	beg->maxvalx = 2;

@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/08 15:50:23 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/08 17:48:13 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ typedef		struct	s_data
 	float				maxvalx;
 	float				minvaly;
 	float				maxvaly;
-	int				posx;
-	int				posy;
 	float			realnb;
 	float			imaginarynb;
 	float				zoom;
 	int 			flag;
 	int 			flag2;
+	int				tfract;
 }					t_data;
 
 typedef		struct	s_screen
@@ -46,7 +45,8 @@ typedef		struct	s_screen
 	char			*data;
 	t_data			*beg;
 }					t_screen;
-
+int     my_key_func(int keycode, t_screen *fst);
+void    re_fract(t_screen *fst, t_data *beg);
 int     clean(t_screen *fst);
 void	ft_julia(t_data *begin);
 void	ft_third(void);
