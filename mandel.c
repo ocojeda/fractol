@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/07 19:08:06 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/08 11:15:11 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int             my_key_func(int keycode, t_screen *fst)
 	return (1);
 }
 
-int			mouse_hook(int button, int x, int y, t_screen *fst)
+static int			mouse_hook(int button, int x, int y, t_screen *fst)
 {
 	float xlen;
 	float ylen;
@@ -35,10 +35,6 @@ int			mouse_hook(int button, int x, int y, t_screen *fst)
 	if(button == 4)
 	{
 		fst->beg->zoom -= 0.3;
-	}
-	if(button == 5)
-	{
-		fst->beg->zoom += 8;
 	}
 	if(button == 1)
 	{

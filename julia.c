@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 14:18:09 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/08 14:23:08 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,39 @@ static int		my_key_func(int keycode, t_screen *fst)
 	return (1);
 }
 
+static int mouse_hook(int button, int x, int y, t_screen *fst)
+{
+	float xlen;
+	float ylen;
+	t_data *beg;
+	float temp;
+
+	beg = fst->beg;
+	if (button == 4)
+	{
+		beg->zoom -= 1;
+	}
+	if (button == 1)
+	{
+		temp = (-1 * (beg->minvalx - beg->maxvalx))/2;
+		xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
+		ylen = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
+		beg->minvalx = xlen - temp;
+		beg->maxvalx = xlen + temp;
+		temp = (-1 * (beg->minvaly - beg->maxvaly))/2;
+		beg->minvaly = ylen - temp;
+		beg->maxvaly = ylen + temp;
+		beg->zoom += 1;
+	}
+	mlx_destroy_image(fst->mlx, fst->img);
+	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
+	algo_julia(fst, 0 , beg);
+	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
+	return (1);
+}
+
 static int		mouse_motion(int x, int y, t_screen *fst)
 {
-//	static int		x2 = 0;
-//	static int		y2 = 0;
-
-/*	if(button == 5)
-	{	
-		exit(0);
-		ft_putnbr(button);
-		mlx_destroy_image(fst->mlx, fst->img);
-		fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-		clean(fst);
-		algo_mandel(fst, 0, fst->beg);
-		mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
-	}*/
 		fst->beg->realnb = ft_map(x, LEN, -1 , 1);
 		fst->beg->imaginarynb = ft_map(y, HEIGHT, -1 , 1);
 		mlx_destroy_image(fst->mlx, fst->img);
