@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/10 13:17:23 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/10 14:35:20 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int             my_key_func(int keycode, t_screen *fst)
 	re_fract(fst, fst->beg);
 	return (1);
 }
-
-static int mouse_hook(int button, int x, int y, t_screen *fst)
+static int 	zoom_julia(t_screen *fst, int button, int x, int y)
 {
 	float xlen;
 	float ylen;
@@ -33,13 +32,15 @@ static int mouse_hook(int button, int x, int y, t_screen *fst)
 	float temp;
 
 	beg = fst->beg;
-	ft_putnbr(button);
 	if (button == 4)
 	{
-		beg->zoom -= 1;
+		beg->flag = 2;
+		beg->zoom -= 0.5;
+		re_fract(fst, fst->beg);
 	}
 	if (button == 5)
 	{
+		beg->flag = 2;
 		temp = (-1 * (beg->minvalx - beg->maxvalx))/2;
 		xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
 		ylen = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
@@ -48,9 +49,36 @@ static int mouse_hook(int button, int x, int y, t_screen *fst)
 		temp = (-1 * (beg->minvaly - beg->maxvaly))/2;
 		beg->minvaly = ylen - temp;
 		beg->maxvaly = ylen + temp;
-		beg->zoom += 1;
+		beg->zoom += 0.3;
+		re_fract(fst, fst->beg);
 	}
-	re_fract(fst, fst->beg);
+	return (1);
+}
+
+static int mouse_hook(int button, int x, int y, t_screen *fst)
+{
+	t_data *beg;
+
+	beg = fst->beg;
+	if(!beg->flag2)
+	{
+		beg->flag = 1;
+		beg->flag2 = button;
+	}
+	if(beg->flag2 != button)
+	{
+		beg->flag = 1;
+		beg->flag2 = button;
+	}
+	if(button == 4 && beg->zoom > 0.6)
+	{
+		beg->flag -= 1;
+			if((beg->flag) == 0)
+				return (zoom_julia(fst, button, x, y));
+	}
+	if(button == 5)
+		if((beg->flag--) == 0)
+			return (zoom_julia(fst, button, x, y));
 	return (1);
 }
 
@@ -67,6 +95,7 @@ void			ft_julia(t_data *beg)
 	t_screen fst;
 
 	beg->tfract = 2;
+	beg->flag = 3;
 	beg->zoom = 1;
 	beg->minvalx = -2;
 	beg->maxvalx = 2;
