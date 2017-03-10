@@ -6,12 +6,11 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/07 18:40:42 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/10 17:23:19 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "stdio.h"
 
 int		calculus(float a, float b, float ca, float cb)
 {
