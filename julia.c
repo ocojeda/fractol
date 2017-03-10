@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/08 17:53:20 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/10 13:17:23 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,12 @@ static int mouse_hook(int button, int x, int y, t_screen *fst)
 	float temp;
 
 	beg = fst->beg;
+	ft_putnbr(button);
 	if (button == 4)
 	{
 		beg->zoom -= 1;
 	}
-	if (button == 1)
+	if (button == 5)
 	{
 		temp = (-1 * (beg->minvalx - beg->maxvalx))/2;
 		xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
@@ -57,6 +58,7 @@ static int		mouse_motion(int x, int y, t_screen *fst)
 {
 	fst->beg->realnb = ft_map(x, LEN, -1 , 1);
 	fst->beg->imaginarynb = ft_map(y, HEIGHT, -1 , 1);
+	re_fract(fst, fst->beg);
 	return (1);
 }
 
