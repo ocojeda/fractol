@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/10 17:23:19 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/11 12:07:46 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		calculus(float a, float b, float ca, float cb)
 {
-	float aa;
-	float bb;
-	int n;
+	float	aa;
+	float	bb;
+	int		n;
 
 	n = 0;
 	while (n < MAX_ITER)
@@ -34,17 +34,17 @@ int		calculus(float a, float b, float ca, float cb)
 
 int		algo_mandel(t_screen *fst, int x, t_data *beg)
 {
-	int y;
-	float a;
-	float b;
-	int color;
-	int n;
+	int		y;
+	float	a;
+	float	b;
+	int		color;
+	int		n;
 
-	y = 0;
-	while (y < HEIGHT)
+	y = -1;
+	while (++y < HEIGHT)
 	{
-		x = 0;
-		while (x < LEN)
+		x = -1;
+		while (++x < LEN)
 		{
 			a = ft_map(x, LEN, beg->minvalx / beg->zoom, beg->maxvalx / beg->zoom);
 			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, beg->maxvaly / beg->zoom);
@@ -57,13 +57,11 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 				color = 0x00bbbbbb;
 			else if (n == MAX_ITER)
 				color = 0x00000000;
-			else 
+			else
 				color = 0x00ffffff;
-			if(fst->data != NULL)
-			((unsigned int *)fst->data)[x + y * LEN] = abs(color);
-			x++;
+			if (fst->data != NULL)
+				((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 		}
-		y++;
 	}
 	return (1);
 }

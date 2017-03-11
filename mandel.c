@@ -6,78 +6,81 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/08 17:48:33 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/11 11:54:48 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void				re_fract(t_screen *fst, t_data *beg)
+void			re_fract(t_screen *fst, t_data *beg)
 {
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
-	if(beg->tfract == 1)
+	if (beg->tfract == 1)
 		algo_mandel(fst, 0, beg);
-	if(beg->tfract == 2)
+	if (beg->tfract == 2)
 		algo_julia(fst, 0, beg);
 	mlx_put_image_to_window(fst->mlx, fst->win, fst->img, 0, 0);
 }
-static int			zoom_out_mandel(t_screen *fst, t_data *beg)
+
+static int		zoom_out_mandel(t_screen *fst, t_data *beg)
 {
 	fst->beg->zoom -= 0.1;
 	beg->flag = 3;
 	re_fract(fst, beg);
 	return (1);
 }
-static int			zoom_in_mandel(t_screen *fst, t_data *beg, int x, int y)
+
+static int		zoom_in_mandel(t_screen *fst, t_data *beg, int x, int y)
 {
 	float xlen;
 	float ylen;
 	float temp;
-	temp = (-1* (beg->minvalx - beg->maxvalx))/2;
+
+	temp = (-1 * (beg->minvalx - beg->maxvalx)) / 2;
 	xlen = ft_map(x, LEN, beg->minvalx, beg->maxvalx);
 	ylen = ft_map(y, HEIGHT, beg->minvaly, beg->maxvaly);
-	beg->minvalx = (xlen-temp);
-	beg->maxvalx = (xlen+temp);
-	temp = (-1* (beg->minvaly - beg->maxvaly))/2;
-	beg->minvaly = (ylen-temp);
-	beg->maxvaly = (ylen+temp);
+	beg->minvalx = (xlen - temp);
+	beg->maxvalx = (xlen + temp);
+	temp = (-1 * (beg->minvaly - beg->maxvaly)) / 2;
+	beg->minvaly = (ylen - temp);
+	beg->maxvaly = (ylen + temp);
 	fst->beg->zoom += 0.1;
 	re_fract(fst, fst->beg);
 	beg->flag = 3;
 	return (1);
 }
-static int			mouse_hook(int button, int x, int y, t_screen *fst)
+
+static int		mouse_hook(int button, int x, int y, t_screen *fst)
 {
 	t_data *beg;
 
 	beg = fst->beg;
-	if(!beg->flag2)
+	if (!beg->flag2)
 	{
 		beg->flag = 1;
 		beg->flag2 = button;
 	}
-	if(beg->flag2 != button)
+	if (beg->flag2 != button)
 	{
 		beg->flag = 1;
 		beg->flag2 = button;
 	}
-	if(button == 4)
+	if (button == 4)
 	{
 		beg->flag -= 1;
-		if(beg->zoom > 0.6)
+		if (beg->zoom > 0.6)
 		{
-			if((beg->flag) == 0)
+			if ((beg->flag) == 0)
 				return (zoom_out_mandel(fst, beg));
 		}
 	}
-	if(button == 5)
-		if((beg->flag--) == 0)
-			return (zoom_in_mandel(fst, beg, x, y));
-	return 1;
+	if (button == 5 && (beg->flag--) == 0)
+		return (zoom_in_mandel(fst, beg, x, y));
+	return (1);
 }
 
-void	ft_mandel(t_data *beg)
+void			ft_mandel(t_data *beg)
 {
 	t_screen fst;
 
@@ -88,13 +91,12 @@ void	ft_mandel(t_data *beg)
 	beg->maxvalx = 2;
 	beg->minvaly = -2;
 	beg->maxvaly = 2;
-	ft_putendl("je suis la !");
 	fst.mlx = mlx_init();
 	fst.img = mlx_new_image(fst.mlx, LEN, HEIGHT);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);
 	fst.beg = beg;
 	algo_mandel(&fst, 0, fst.beg);
-	fst.win = mlx_new_window(fst.mlx, LEN, HEIGHT, "mathilde aime trop la polla!");
+	fst.win = mlx_new_window(fst.mlx, LEN, HEIGHT, "Fractol 42");
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
 	mlx_hook(fst.win, 4, 3, mouse_hook, &fst);
 	mlx_hook(fst.win, 2, 3, my_key_func, &fst);

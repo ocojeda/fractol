@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:41:39 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/01 17:41:58 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/11 12:08:50 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int		clean(t_screen *fst)
 		x = 0;
 		while (x < LEN)
 		{
-			if(fst->data != NULL)
-			((unsigned int *)fst->data)[x + y * LEN] = color;
+			if (fst->data != NULL)
+				((unsigned int *)fst->data)[x + y * LEN] = color;
 			x++;
 		}
 		y++;

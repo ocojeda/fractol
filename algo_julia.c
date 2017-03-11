@@ -6,16 +6,17 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:37:24 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/08 17:32:30 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/03/11 12:06:06 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-static int		calculus(float a, float b, t_data *beg)
+
+static int	calculus(float a, float b, t_data *beg)
 {
-	float aa;
-	float bb;
-	int n;
+	float	aa;
+	float	bb;
+	int		n;
 
 	n = 0;
 	while (n < MAX_ITER)
@@ -31,27 +32,26 @@ static int		calculus(float a, float b, t_data *beg)
 	return (n);
 }
 
-int		algo_julia(t_screen *fst, int x, t_data *beg)
+int			algo_julia(t_screen *fst, int x, t_data *beg)
 {
-	int y;
-	float a;
-	float b;
-	int color;
-	int n;
+	int		y;
+	float	a;
+	float	b;
+	int		color;
+	int		n;
 
-	y = 0;
-	while (y < HEIGHT)
+	y = -1;
+	while (++y < HEIGHT)
 	{
-		x = 0;
-		while (x < LEN)
+		x = -1;
+		while (++x < LEN)
 		{
 			a = ft_map(x, LEN, beg->minvalx / beg->zoom, beg->maxvalx / beg->zoom);
 			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, beg->maxvaly / beg->zoom);
-
 			n = calculus(a, b, beg);
 			if (n < (MAX_ITER / 2) / 2)
 				color = 0x0;
-			else if (n == MAX_ITER )
+			else if (n == MAX_ITER)
 				color = 0x0;
 			else if (n < MAX_ITER / 2)
 				color = 0x333333;
@@ -59,13 +59,11 @@ int		algo_julia(t_screen *fst, int x, t_data *beg)
 				color = 0x999999;
 			else if (n > MAX_ITER / 2)
 				color = 0xdddddd;
-			else 
+			else
 				color = 0x0;
-			if(fst->data != NULL)
-			((unsigned int *)fst->data)[x + y * LEN] = abs(color);
-			x++;
+			if (fst->data != NULL)
+				((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 		}
-		y++;
 	}
 	return (1);
 }
