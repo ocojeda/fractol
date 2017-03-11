@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 15:54:17 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/11 17:08:51 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef	struct		s_screen
 {
 	void			*mlx;
 	void			*win;
+	void			*win2;
 	void			*img;
 	int				bpp;
 	int				sizeline;
@@ -57,5 +58,7 @@ int					algo_mandel(t_screen *fst, int x, t_data *beg);
 int					algo_burning_ship(t_screen *fst, int x, t_data *beg);
 int					algo_julia(t_screen *fst, int x, t_data *beg);
 void				ft_error(char *str);
+void				ft_init_color(t_screen *fst);
+void				ft_color(int n, t_screen *fst);
 
 #endif
