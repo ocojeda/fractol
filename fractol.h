@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 17:08:51 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 18:22:01 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct		s_data
 	int				flag;
 	int				flag2;
 	int				tfract;
+	int				motion;
 }					t_data;
 
 typedef	struct		s_screen

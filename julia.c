@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 15:33:46 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/11 18:22:02 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ static int	zoom_julia(t_screen *fst, int button, int x, int y)
 	return (1);
 }
 
+void		motion_on_off(t_data *beg)
+{
+	if (beg->motion == 0)
+		beg->motion = 1;
+	else if (beg->motion == 1)
+		beg->motion = 0;
+}
+
 static int	mouse_hook(int button, int x, int y, t_screen *fst)
 {
 	t_data *beg;
@@ -67,14 +75,19 @@ static int	mouse_hook(int button, int x, int y, t_screen *fst)
 	if (button == 5)
 		if ((beg->flag--) == 0)
 			return (zoom_julia(fst, button, x, y));
+	if (button == 1)
+		motion_on_off(beg);
 	return (1);
 }
 
 static int	mouse_motion(int x, int y, t_screen *fst)
 {
-	fst->beg->realnb = ft_map(x, LEN, -1, 1);
-	fst->beg->imaginarynb = ft_map(y, HEIGHT, -1, 1);
-	re_fract(fst, fst->beg);
+	if (fst->beg->motion == 0)
+	{
+		fst->beg->realnb = ft_map(x, LEN, -1, 1);
+		fst->beg->imaginarynb = ft_map(y, HEIGHT, -1, 1);
+		re_fract(fst, fst->beg);
+	}
 	return (1);
 }
 
@@ -82,6 +95,7 @@ void		ft_julia(t_data *beg)
 {
 	t_screen fst;
 
+	beg->motion = 0;
 	beg->tfract = 2;
 	beg->flag = 3;
 	beg->zoom = 1;

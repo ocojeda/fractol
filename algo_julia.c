@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:37:24 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 17:10:20 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 18:22:04 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	calculus(float a, float b, t_data *beg)
 		bb = 2 * a * b;
 		a = aa + beg->realnb;
 		b = bb + beg->imaginarynb;
-		if (a + b > 5)
+		if (a + b > 16)
 			return (n);
 		n++;
 	}
