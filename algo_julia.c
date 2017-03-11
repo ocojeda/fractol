@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:37:24 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 17:07:43 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 17:10:20 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int			algo_julia(t_screen *fst, int x, t_data *beg)
 	int		color;
 	int		n;
 
-	ft_init_color(fst);
+//	ft_init_color(fst);
 	y = -1;
 	while (++y < HEIGHT)
 	{
