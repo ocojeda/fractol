@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 12:50:12 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 15:54:17 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ int					my_key_func(int keycode, t_screen *fst);
 void				re_fract(t_screen *fst, t_data *beg);
 int					clean(t_screen *fst);
 void				ft_julia(t_data *begin);
-void				ft_third(void);
+void				ft_burning_ship(t_data *begin);
 void				ft_mandel(t_data *begin);
 float				ft_map(float x, float lenght, float min, float max);
 int					algo_mandel(t_screen *fst, int x, t_data *beg);
+int					algo_burning_ship(t_screen *fst, int x, t_data *beg);
 int					algo_julia(t_screen *fst, int x, t_data *beg);
 void				ft_error(char *str);
 

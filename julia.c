@@ -6,22 +6,11 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 12:04:14 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 15:33:46 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-int			my_key_func(int keycode, t_screen *fst)
-{
-	if (keycode == 53)
-	{
-		free(fst->beg);
-		exit(0);
-	}
-	re_fract(fst, fst->beg);
-	return (1);
-}
 
 static int	zoom_julia(t_screen *fst, int button, int x, int y)
 {

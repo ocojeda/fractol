@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 12:50:09 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 15:54:15 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_fractol_available(void)
 {
 	ft_putendl("Mandelbrot");
 	ft_putendl("Julia");
+	ft_putendl("Burning ship");
 }
 
 int		main(int ac, char **av)
@@ -36,6 +37,8 @@ int		main(int ac, char **av)
 			ft_julia(beg);
 		else if (ft_strcmp(av[1], "Mandelbrot") == 0)
 			ft_mandel(beg);
+		else if (ft_strcmp(av[1], "Burning ship") == 0)
+			ft_burning_ship(beg);
 		else
 			ft_fractol_available();
 	}

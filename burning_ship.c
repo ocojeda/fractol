@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandel.c                                           :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/11 15:41:46 by tfaure           ###   ########.fr       */
+/*   Created: 2017/03/11 15:34:14 by tfaure            #+#    #+#             */
+/*   Updated: 2017/03/11 15:40:48 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int		zoom_out_mandel(t_screen *fst, t_data *beg)
+static int		zoom_out(t_screen *fst, t_data *beg)
 {
 	fst->beg->zoom -= 0.1;
 	beg->flag = 3;
@@ -20,7 +20,7 @@ static int		zoom_out_mandel(t_screen *fst, t_data *beg)
 	return (1);
 }
 
-static int		zoom_in_mandel(t_screen *fst, t_data *beg, int x, int y)
+static int		zoom_in(t_screen *fst, t_data *beg, int x, int y)
 {
 	float xlen;
 	float ylen;
@@ -61,19 +61,19 @@ static int		mouse_hook(int button, int x, int y, t_screen *fst)
 		if (beg->zoom > 0.6)
 		{
 			if ((beg->flag) == 0)
-				return (zoom_out_mandel(fst, beg));
+				return (zoom_out(fst, beg));
 		}
 	}
 	if (button == 5 && (beg->flag--) == 0)
-		return (zoom_in_mandel(fst, beg, x, y));
+		return (zoom_in(fst, beg, x, y));
 	return (1);
 }
 
-void			ft_mandel(t_data *beg)
+void			ft_burning_ship(t_data *beg)
 {
 	t_screen fst;
 
-	beg->tfract = 1;
+	beg->tfract = 3;
 	beg->flag = 2;
 	beg->zoom = 1;
 	beg->minvalx = -2;
@@ -84,7 +84,7 @@ void			ft_mandel(t_data *beg)
 	fst.img = mlx_new_image(fst.mlx, LEN, HEIGHT);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);
 	fst.beg = beg;
-	algo_mandel(&fst, 0, fst.beg);
+	algo_burning_ship(&fst, 0, fst.beg);
 	fst.win = mlx_new_window(fst.mlx, LEN, HEIGHT, "Fractol 42");
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
 	mlx_hook(fst.win, 4, 3, mouse_hook, &fst);
