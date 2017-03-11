@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 12:24:23 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 12:50:12 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void				ft_mandel(t_data *begin);
 float				ft_map(float x, float lenght, float min, float max);
 int					algo_mandel(t_screen *fst, int x, t_data *beg);
 int					algo_julia(t_screen *fst, int x, t_data *beg);
+void				ft_error(char *str);
 
 #endif
