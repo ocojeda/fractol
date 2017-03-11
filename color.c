@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 15:29:25 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 17:07:40 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/11 17:17:51 by myernaux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	mouse_hook(int button, int x, int y, int n)
 void	ft_color(int n, t_screen *fst)
 {
 	mlx_hook(fst->win2, 4, 3, mouse_hook, n);
+
 }
