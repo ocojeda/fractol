@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/12 15:11:03 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/12 15:53:53 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,5 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 				((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 		}
 	}
-
-		ft_putnbr(fst->colortable->curcol);
 	return (1);
 }

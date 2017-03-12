@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 15:31:38 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/12 15:11:02 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/12 15:53:26 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ void		re_fract(t_screen *fst, t_data *beg)
 	mlx_destroy_image(fst->mlx, fst->img);
 	fst->img = mlx_new_image(fst->mlx, LEN, HEIGHT);
 	if (beg->tfract == 1)
-	{
-		ft_putstr("coucoumec\n");
 		algo_mandel(fst, 0, beg);
-	}
 	else if (beg->tfract == 2)
 		algo_julia(fst, 0, beg);
 	else if (beg->tfract == 3)
