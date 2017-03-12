@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 15:34:26 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 15:54:12 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/12 15:10:10 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int		calculus(float a, float b, float ca, float cb)
 	return (n);
 }
 
-int		algo_burning_ship(t_screen *fst, int x, t_data *beg)
+int				algo_burning_ship(t_screen *fst, int x, t_data *beg)
 {
 	int		y;
 	float	a;
@@ -47,19 +47,13 @@ int		algo_burning_ship(t_screen *fst, int x, t_data *beg)
 		x = -1;
 		while (++x < LEN)
 		{
-			a = ft_map(x, LEN, beg->minvalx / beg->zoom, beg->maxvalx / beg->zoom);
-			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, beg->maxvaly / beg->zoom);
+			a = ft_map(x, LEN, beg->minvalx / beg->zoom, \
+					beg->maxvalx / beg->zoom);
+			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, \
+					beg->maxvaly / beg->zoom);
 			n = calculus(a, b, a, b);
-			if (n < MAX_ITER / 2)
-				color = 0;
-			else if (n == (MAX_ITER / 2))
-				color = 0x00777777;
-			else if (n > (MAX_ITER / 2) && n != MAX_ITER)
-				color = 0x00bbbbbb;
-			else if (n == MAX_ITER)
-				color = 0x00000000;
-			else
-				color = 0x00ffffff;
+			color = ft_map(n, MAX_ITER, fst->colortable->curcol << 4, \
+					fst->colortable->curcol >> 4);
 			if (fst->data != NULL)
 				((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 		}

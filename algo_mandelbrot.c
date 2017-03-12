@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 15:48:49 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 12:07:46 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/03/12 15:11:03 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,18 @@ int		algo_mandel(t_screen *fst, int x, t_data *beg)
 		x = -1;
 		while (++x < LEN)
 		{
-			a = ft_map(x, LEN, beg->minvalx / beg->zoom, beg->maxvalx / beg->zoom);
-			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, beg->maxvaly / beg->zoom);
+			a = ft_map(x, LEN, beg->minvalx / beg->zoom, \
+					beg->maxvalx / beg->zoom);
+			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, \
+					beg->maxvaly / beg->zoom);
 			n = calculus(a, b, a, b);
-			if (n < 20)
-				color = 0;
-			else if (n == (MAX_ITER / 2))
-				color = 0x00777777;
-			else if (n > (MAX_ITER / 2) && n != MAX_ITER)
-				color = 0x00bbbbbb;
-			else if (n == MAX_ITER)
-				color = 0x00000000;
-			else
-				color = 0x00ffffff;
+			color = ft_map(n, MAX_ITER, fst->colortable->curcol << 4, \
+					fst->colortable->curcol >> 4);
 			if (fst->data != NULL)
 				((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 		}
 	}
+
+		ft_putnbr(fst->colortable->curcol);
 	return (1);
 }

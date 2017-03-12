@@ -6,7 +6,7 @@
 /*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/11 15:41:46 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/12 15:11:00 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,12 @@ void			ft_mandel(t_data *beg)
 	fst.img = mlx_new_image(fst.mlx, LEN, HEIGHT);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);
 	fst.beg = beg;
+	ft_init_color(&fst);
 	algo_mandel(&fst, 0, fst.beg);
 	fst.win = mlx_new_window(fst.mlx, LEN, HEIGHT, "Fractol 42");
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
 	mlx_hook(fst.win, 4, 3, mouse_hook, &fst);
 	mlx_hook(fst.win, 2, 3, my_key_func, &fst);
+	mlx_hook(fst.win2, 4, 3, mouse_hook_color, &fst);
 	mlx_loop(fst.mlx);
 }

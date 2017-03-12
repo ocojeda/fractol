@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:37:24 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 18:22:04 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/12 14:38:19 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,22 @@ int			algo_julia(t_screen *fst, int x, t_data *beg)
 	int		y;
 	float	a;
 	float	b;
-	int		color;
 	int		n;
+	int		color;
 
-//	ft_init_color(fst);
 	y = -1;
 	while (++y < HEIGHT)
 	{
 		x = -1;
 		while (++x < LEN)
 		{
-			a = ft_map(x, LEN, beg->minvalx / beg->zoom, beg->maxvalx / beg->zoom);
-			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, beg->maxvaly / beg->zoom);
+			a = ft_map(x, LEN, beg->minvalx / beg->zoom, \
+					beg->maxvalx / beg->zoom);
+			b = ft_map(y, HEIGHT, beg->minvaly / beg->zoom, \
+					beg->maxvaly / beg->zoom);
 			n = calculus(a, b, beg);
-//			ft_color(n, fst);
-			if (n < (MAX_ITER / 2) / 2)
-				color = 0x0;
-			else if (n == MAX_ITER)
-				color = 0x0;
-			else if (n < MAX_ITER / 2)
-				color = 0x0b3b0b;
-			else if (n > MAX_ITER * 0.75)
-				color = 0x088a08;
-			else if (n > MAX_ITER / 2)
-				color = 0x01df01;
-			else
-				color = 0x0;
+			color = ft_map(n, MAX_ITER, fst->colortable->curcol << 4, \
+					fst->colortable->curcol >> 4);
 			if (fst->data != NULL)
 				((unsigned int *)fst->data)[x + y * LEN] = abs(color);
 		}

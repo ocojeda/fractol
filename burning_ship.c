@@ -6,7 +6,7 @@
 /*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/11 15:34:14 by tfaure            #+#    #+#             */
-/*   Updated: 2017/03/11 15:40:48 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/12 14:40:04 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,12 @@ void			ft_burning_ship(t_data *beg)
 	fst.img = mlx_new_image(fst.mlx, LEN, HEIGHT);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);
 	fst.beg = beg;
+	ft_init_color(&fst);
 	algo_burning_ship(&fst, 0, fst.beg);
 	fst.win = mlx_new_window(fst.mlx, LEN, HEIGHT, "Fractol 42");
 	mlx_put_image_to_window(fst.mlx, fst.win, fst.img, 0, 0);
 	mlx_hook(fst.win, 4, 3, mouse_hook, &fst);
 	mlx_hook(fst.win, 2, 3, my_key_func, &fst);
+	mlx_hook(fst.win2, 4, 3, mouse_hook_color, &fst);
 	mlx_loop(fst.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/03/11 15:54:15 by tfaure           ###   ########.fr       */
+/*   Updated: 2017/03/12 11:40:42 by tfaure           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int		main(int ac, char **av)
 		else
 			ft_fractol_available();
 	}
-	else 
+	else
 		ft_error("./fractol [FILE]");
-	//	if (ft_strcmp(av[1], "third") == 0)
-//		ft_third();
 }
