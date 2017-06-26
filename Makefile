@@ -6,7 +6,7 @@
 #    By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/17 18:15:56 by ocojeda-          #+#    #+#              #
-#    Updated: 2017/06/22 13:24:07 by myernaux         ###   ########.fr        #
+#    Updated: 2017/06/26 13:56:00 by myernaux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJS)
 	@ar rc $(NAMEBIN) $(OBJS)
 	@ranlib $(NAMEBIN)
 	@gcc -o $(NAME) $(NAMEBIN) $(MLXFLAGS)
-	@echo "$(GREEN)--------Fdf compiled--------$(NC)"
+	@echo "$(GREEN)--------Fractol compiled--------$(NC)"
 
 clean:
 	@make clean -C $(LIBFT_PATH)
@@ -51,6 +51,6 @@ fclean: clean
 	@make fclean -C $(LIBFT_PATH)
 	@/bin/rm -rf $(NAMEBIN)
 	@/bin/rm -rf $(NAME)
-	@echo "$(GREEN)---Fdf removed completely---$(NC)"
+	@echo "$(GREEN)---Fractol removed completely---$(NC)"
 
 re: fclean all
