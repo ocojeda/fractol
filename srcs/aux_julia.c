@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aux_julia.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ocojeda- <ocojeda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/12 11:48:55 by tfaure            #+#    #+#             */
-/*   Updated: 2017/06/22 13:28:48 by myernaux         ###   ########.fr       */
+/*   Created: 2017/06/26 15:50:29 by ocojeda-          #+#    #+#             */
+/*   Updated: 2017/06/28 13:21:18 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void		zoom_i(t_screen *fst, int x, int y)
 	temp = (-1 * (beg->minvaly - beg->maxvaly)) / 2;
 	beg->minvaly = ylen - temp;
 	beg->maxvaly = ylen + temp;
-	beg->zoom += 0.3;
+	beg->zoom += beg->zoom_rate;
+	printf("%f\n", beg->zoom);
 	re_fract(fst, fst->beg);
 }
 

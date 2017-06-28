@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ocojeda- <ocojeda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/27 13:40:40 by myernaux          #+#    #+#             */
-/*   Updated: 2017/06/22 13:25:30 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:21:39 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct		s_data
 	float			realnb;
 	float			imaginarynb;
 	float			zoom;
+	float			zoom_rate;
 	int				flag;
 	int				flag2;
 	int				tfract;
@@ -75,5 +76,8 @@ void				ft_init_color(t_screen *fst);
 void				zoom_i(t_screen *fst, int x, int y);
 void				motion_on_off(t_data *beg);
 int					mouse_hook_color(int button, int x, int y, t_screen *fst);
+void				reset_julia(t_data *beg);
+void				reset_mandel(t_data *beg);
+void				reset_burning(t_data *beg);
 
 #endif

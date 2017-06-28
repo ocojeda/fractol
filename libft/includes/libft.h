@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ocojeda- <ocojeda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/13 06:43:02 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/06/13 06:43:06 by ocojeda-         ###   ########.fr       */
+/*   Updated: 2017/06/28 13:12:26 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits.h>
 # include <string.h>
 # include <stdint.h>
+# include <stdio.h>    // a enlever
 
 # define BUFF_SIZE 100000
 # define NBMAXFD 42

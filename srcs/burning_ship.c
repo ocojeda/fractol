@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ocojeda- <ocojeda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/11 15:34:14 by tfaure            #+#    #+#             */
-/*   Updated: 2017/06/22 13:28:58 by myernaux         ###   ########.fr       */
+/*   Created: 2017/06/26 15:53:25 by ocojeda-          #+#    #+#             */
+/*   Updated: 2017/06/28 14:24:36 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int		zoom_out(t_screen *fst, t_data *beg)
 {
-	fst->beg->zoom -= 0.1;
+	fst->beg->zoom -= fst->beg->zoom_rate;
 	beg->flag = 3;
 	re_fract(fst, beg);
 	return (1);
@@ -34,7 +34,7 @@ static int		zoom_in(t_screen *fst, t_data *beg, int x, int y)
 	temp = (-1 * (beg->minvaly - beg->maxvaly)) / 2;
 	beg->minvaly = (ylen - temp);
 	beg->maxvaly = (ylen + temp);
-	fst->beg->zoom += 0.1;
+	fst->beg->zoom += fst->beg->zoom_rate;
 	re_fract(fst, fst->beg);
 	beg->flag = 3;
 	return (1);
@@ -69,17 +69,26 @@ static int		mouse_hook(int button, int x, int y, t_screen *fst)
 	return (1);
 }
 
-void			ft_burning_ship(t_data *beg)
+void		reset_burning(t_data *beg)
 {
-	t_screen fst;
-
-	beg->tfract = 3;
+	beg->motion = 0;
+	beg->zoom_rate = 0.1;
 	beg->flag = 2;
 	beg->zoom = 1;
 	beg->minvalx = -2;
 	beg->maxvalx = 2;
 	beg->minvaly = -2;
 	beg->maxvaly = 2;
+	beg->realnb = 0;
+	beg->imaginarynb = 0;
+}
+
+void			ft_burning_ship(t_data *beg)
+{
+	t_screen fst;
+
+	beg->tfract = 3;
+	reset_burning(beg);
 	fst.mlx = mlx_init();
 	fst.img = mlx_new_image(fst.mlx, LEN, HEIGHT);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);

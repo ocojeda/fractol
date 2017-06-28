@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: myernaux <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ocojeda- <ocojeda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 13:46:15 by myernaux          #+#    #+#             */
-/*   Updated: 2017/06/22 13:33:44 by myernaux         ###   ########.fr       */
+/*   Created: 2017/06/28 13:00:06 by ocojeda-          #+#    #+#             */
+/*   Updated: 2017/06/28 13:33:51 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_error(char *str)
 
 void	ft_fractol_available(void)
 {
+	ft_putendl("usage is only one of the following options->");
 	ft_putendl("Mandelbrot");
 	ft_putendl("Julia");
 	ft_putendl("Burning ship");
@@ -27,21 +28,20 @@ void	ft_fractol_available(void)
 
 int		main(int ac, char **av)
 {
-	t_data *beg;
+	t_data beg;
 
-	if (!(beg = (t_data *)malloc(sizeof(t_data))))
-		return (0);
 	if (ac == 2)
 	{
 		if (ft_strcmp(av[1], "Julia") == 0)
-			ft_julia(beg);
+			ft_julia(&beg);
 		else if (ft_strcmp(av[1], "Mandelbrot") == 0)
-			ft_mandel(beg);
+			ft_mandel(&beg);
 		else if (ft_strcmp(av[1], "Burning ship") == 0)
-			ft_burning_ship(beg);
+			ft_burning_ship(&beg);
 		else
 			ft_fractol_available();
 	}
 	else
-		ft_error("./fractol [FILE]");
+		ft_fractol_available();
+	return (0);
 }

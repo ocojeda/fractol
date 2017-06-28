@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandel.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ocojeda- <ocojeda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/27 16:53:04 by ocojeda-          #+#    #+#             */
-/*   Updated: 2017/03/12 15:11:00 by tfaure           ###   ########.fr       */
+/*   Created: 2017/06/28 13:00:16 by ocojeda-          #+#    #+#             */
+/*   Updated: 2017/06/28 13:44:12 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 static int		zoom_out_mandel(t_screen *fst, t_data *beg)
 {
-	fst->beg->zoom -= 0.1;
+	fst->beg->zoom -= beg->zoom_rate;
 	beg->flag = 3;
+	printf("%f\n", beg->zoom);
 	re_fract(fst, beg);
 	return (1);
 }
@@ -34,7 +35,8 @@ static int		zoom_in_mandel(t_screen *fst, t_data *beg, int x, int y)
 	temp = (-1 * (beg->minvaly - beg->maxvaly)) / 2;
 	beg->minvaly = (ylen - temp);
 	beg->maxvaly = (ylen + temp);
-	fst->beg->zoom += 0.1;
+	fst->beg->zoom += beg->zoom_rate;
+	printf("%f\n", beg->zoom);
 	re_fract(fst, fst->beg);
 	beg->flag = 3;
 	return (1);
@@ -69,17 +71,25 @@ static int		mouse_hook(int button, int x, int y, t_screen *fst)
 	return (1);
 }
 
-void			ft_mandel(t_data *beg)
+void			reset_mandel(t_data *beg)
 {
-	t_screen fst;
-
-	beg->tfract = 1;
 	beg->flag = 2;
 	beg->zoom = 1;
 	beg->minvalx = -2;
 	beg->maxvalx = 2;
 	beg->minvaly = -2;
 	beg->maxvaly = 2;
+	beg->zoom_rate = 0.1;
+	beg->realnb = 0;
+	beg->imaginarynb = 0;
+}
+
+void			ft_mandel(t_data *beg)
+{
+	t_screen fst;
+
+	reset_mandel(beg);
+	beg->tfract = 1;
 	fst.mlx = mlx_init();
 	fst.img = mlx_new_image(fst.mlx, LEN, HEIGHT);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);

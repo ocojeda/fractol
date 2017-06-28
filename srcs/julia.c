@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfaure <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: ocojeda- <ocojeda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/01 17:56:17 by tfaure            #+#    #+#             */
-/*   Updated: 2017/06/22 13:29:49 by myernaux         ###   ########.fr       */
+/*   Updated: 2017/06/28 14:12:34 by ocojeda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,12 @@ static int	zoom_julia(t_screen *fst, int button, int x, int y)
 	if (button == 4)
 	{
 		beg->flag = 2;
-		beg->zoom -= 0.5;
+		beg->zoom -= beg->zoom_rate;
+		printf("%f\n", beg->zoom);
 		re_fract(fst, fst->beg);
 	}
 	if (button == 5)
-	{
 		zoom_i(fst, x, y);
-	}
 	return (1);
 }
 
@@ -69,13 +68,10 @@ static int	mouse_motion(int x, int y, t_screen *fst)
 	}
 	return (1);
 }
-
-void		ft_julia(t_data *beg)
+void		reset_julia(t_data *beg)
 {
-	t_screen fst;
-
 	beg->motion = 0;
-	beg->tfract = 2;
+	beg->zoom_rate = 0.1;
 	beg->flag = 3;
 	beg->zoom = 1;
 	beg->minvalx = -2;
@@ -84,6 +80,13 @@ void		ft_julia(t_data *beg)
 	beg->maxvaly = 2;
 	beg->realnb = 0;
 	beg->imaginarynb = 0;
+}
+
+void		ft_julia(t_data *beg)
+{
+	t_screen fst;
+	beg->tfract = 2;
+	reset_julia(beg);
 	fst.mlx = mlx_init();
 	fst.img = mlx_new_image(fst.mlx, LEN, HEIGHT);
 	fst.data = mlx_get_data_addr(fst.img, &fst.bpp, &fst.sizeline, &fst.endian);
